@@ -1,0 +1,30 @@
+@startuml
+title "IT Administrator Responds To Help Desk Enquiry"
+participant ":Trainee" as trainee
+participant ":helpDesk" as help
+participant ":ITadministrator" as itAdmin
+
+trainee -> help : accessHelpDesk() 
+note right: helpDesk automatically opens a chat\nsession on the IT Administrator's device
+activate trainee
+activate help
+
+help -> itAdmin : openChatSession()
+activate itAdmin
+
+loop Both Chat Sessions Still Active
+    itAdmin -> trainee : sendMessage()
+    trainee --> itAdmin : receiveMessage()
+    alt IT Admin Closed Chat Session
+        itAdmin -> help : endChatSession()
+    end
+    
+    trainee -> itAdmin : sendMessage()
+    itAdmin --> trainee : receiveMessage()
+    alt Trainee Closed Chat Session
+        trainee -> help : endChatSession()
+    end
+
+end
+
+@enduml

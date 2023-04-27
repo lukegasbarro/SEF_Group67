@@ -1,0 +1,39 @@
+
+@startuml
+title Finance Manager Refunds Course Registration Fee
+participant "trainee:Trainee" as trainee
+participant ":FinanceManager" as finance
+participant ":System" as system
+participant "paymentMethod:Trainee" as paymentMethod
+
+activate system
+activate trainee
+
+alt Trainee Is Registered
+    trainee -> finance : cancelTraining()
+    activate finance
+    
+    alt More Than 24 Hours\nBefore First Session
+        finance -> system : approveRefund()
+
+        alt Original Payment\nMethod Is Active
+            system -> paymentMethod : depositAmount()
+            activate paymentMethod
+        else Original Payment\nMethod Not Active
+            system --> finance : Refund Failed
+            finance --> trainee : Refund Denied
+            deactivate finance
+        end
+    end
+
+    alt Training Course\nHas Not Started
+        system -> system : makePositionAvailable()
+    end
+
+    system -> trainee : changeStatusToUnregistered()
+    paymentMethod --> trainee : Receive Refund
+    deactivate paymentMethod
+    deactivate trainee
+end
+
+@enduml
