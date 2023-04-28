@@ -1,6 +1,6 @@
 
 @startuml
-title Career Consultant Runs Career Counselling Session
+title Career Consultant Runs Career Counselling Session With Unregistered User
 participant ":CareerConsultant" as career
 participant ":UnregisteredUser" as unregistered
 ' participant ":CounsellingTimetable" as timetable
@@ -21,7 +21,7 @@ timetable --> unregistered : Timetable
 
 unregistered -> counsellingBooking : bookCounsellingSession()
 activate counsellingBooking
-counsellingBooking --> unregistered : Session Details
+counsellingBooking --> unregistered : Booking Confirmation
 deactivate counsellingBooking
 
 ' cancel session before session starts
@@ -58,6 +58,8 @@ alt Counselling Sesson Not Cancelled
 
         alt End Counselling Session
             career -> counsellingSession : endSession()
+            counsellingSession --> career : Session Ended
+            counsellingSession -> unregistered : Session Ended
         end
         
         deactivate counsellingSession
@@ -65,9 +67,9 @@ alt Counselling Sesson Not Cancelled
 
 ' counselling session cancelled before session
 else Counselling Sesson Cancelled
-    timetable --> unregistered : Message: Session Cancelled
+    timetable --> unregistered : Session Cancelled
     deactivate unregistered
-    timetable --> career : Message: Session Cancelled
+    timetable --> career : Session Cancelled
     deactivate timetable
     deactivate career
 
