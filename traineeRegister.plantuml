@@ -35,6 +35,8 @@ loop Course Selection Fail
     unregistered -> training : selectTrainingCourse()
     alt Position Available In Selected Course
         training --> unregistered : Selected Course
+    else Course Full
+        training --> unregistered : Message: Course Full
         deactivate training
     end
 end
@@ -48,7 +50,7 @@ loop Personal Information Fail
     alt Personal Information Valid
         system --> unregistered : Personal Information
     else Personal Information Invalid
-        system --> unregistered : Error Message
+        system --> unregistered : Error Message: Personal Information Invalid
     end 
 end
 
@@ -58,7 +60,7 @@ loop Username, Registration ID, Password Fail
     alt Registration Information Valid
         system --> unregistered : Registration Information
     else Registration Information Invalid
-        system --> unregistered : Error Message
+        system --> unregistered : Error Message: Registration Information Invalid   
     end 
 end
 
@@ -75,7 +77,7 @@ loop Payment Fail
     alt Payment Valid
         system --> unregistered : Payment Confirmation
     else Payment Invalid
-        system --> unregistered : Error Message
+        system --> unregistered : Error Message: Payment Failed
     end 
 end
 
@@ -84,7 +86,7 @@ alt Payment Success
     system -> unregistered : setUserStatus(Trainee)
     deactivate unregistered
 end
-note right: After registration, the system changes the\n status from Unregistered User to Trainee
+note right: After registration, the system changes the\n user status from Unregistered User to Trainee
 
 ' access training resources
 system -> trainee : newTrainee(unregisteredUser)
@@ -94,5 +96,7 @@ activate trainee
 trainee -> trainingResources : accessCourseResources(username, password)
 activate trainingResources
 trainingResources --> trainee : Course Resources
+deactivate trainee
+deactivate trainingResources
 
 @enduml
