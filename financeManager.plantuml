@@ -6,6 +6,7 @@ participant ":Trainee" as trainee
 participant ":FinanceManager" as finance
 participant ":System" as system
 participant "paymentMethod:Trainee" as paymentMethod
+participant "TrainingCourse" as trainingCourse
 
 alt Trainee Is Registered
     trainee -> finance : cancelTraining()
@@ -21,18 +22,26 @@ alt Trainee Is Registered
             activate paymentMethod
         else Original Payment\nMethod Not Active
             system --> finance : Refund Failed
+        end
+    else Less Than 24 Hours\nBefore First Session
             finance --> trainee : Refund Denied
             deactivate finance
-        end
     end
+
+    system -> trainingCourse : hasCourseStarted()
+    note left: The system checks if the\ntraining course has started 
+    activate trainingCourse
+    trainingCourse --> system : Course Status
+    deactivate trainingCourse
 
     alt Training Course\nHas Not Started
         system -> system : makePositionAvailable()
+        ' note left: The system makes the position available
     end
 
     system -> trainee : changeStatusToUnregistered()
     deactivate system
-    paymentMethod --> trainee : Receive Refund
+    paymentMethod --> trainee : Message: Refund Successful
     deactivate paymentMethod
     deactivate trainee
 end

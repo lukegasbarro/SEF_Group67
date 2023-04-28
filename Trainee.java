@@ -1,24 +1,28 @@
 public class Trainee {
-    private String name;
-    private int studentNumber;
-    private boolean isRegistered;
-    private int paidAmount;
-    private boolean refundStatus;
-    private String paymentMethod;
-    private boolean paymentMethodActive;
-    private boolean twentyFourhoursBeforeFirstSession;
+    public String name;
+    public int studentNumber;
+    public boolean isRegistered;
+    public int paidAmount;
+    public boolean refundStatus;
+    
+    public boolean paymentMethodActive;
+    public boolean twentyFourhoursBeforeFirstSession;
 
 
-    public Trainee(String name, int studentNumber, boolean isRegistered, int paidAmount, boolean refundStatus, String paymentMethod, boolean paymentMethodActive, boolean twentyFourhoursBeforeFirstSession) {
+    public Trainee(String name, int studentNumber, boolean isRegistered, int paidAmount, boolean refundStatus, boolean paymentMethodActive, boolean twentyFourhoursBeforeFirstSession) {
         this.name = name;
         this.studentNumber = studentNumber;
         this.isRegistered = isRegistered;
         this.paidAmount = paidAmount;
         this.refundStatus = refundStatus;
-        this.paymentMethod = paymentMethod;
+        
         this.paymentMethodActive = paymentMethodActive;
         this.twentyFourhoursBeforeFirstSession = twentyFourhoursBeforeFirstSession;
     }
+
+    PaymentMethod paymentMethod = new PaymentMethod();
+    
+     
 
     public String getName() {
         return name;
@@ -40,9 +44,6 @@ public class Trainee {
         return refundStatus;
     }
 
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
 
     public boolean isPaymentMethodActive() {
         return paymentMethodActive;
@@ -72,9 +73,6 @@ public class Trainee {
         this.refundStatus = refundStatus;
     }
 
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 
     public void setPaymentMethodActive(boolean paymentMethodActive) {
         this.paymentMethodActive = paymentMethodActive;
