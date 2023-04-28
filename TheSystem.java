@@ -20,5 +20,19 @@ public class TheSystem {
         return true;
     }
 
+    //This release poll function will be exeecuted for each student enrolled in the selected course.
+    //It will make the pole visible in the students training resources for the selected course.
+    public void releasePoll(int registrationID, FeedbackPoll feedbackPoll) {
+        
+    }
+
+    //Every pole that is completed by a trainee is automatically stored by the system. 
+    //This will be stored in the database.
+    public FeedbackPoll storePoll(FeedbackPoll feedbackPoll) {
+        
+        return feedbackPoll;
+    }
+
+
 
 }

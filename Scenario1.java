@@ -1,4 +1,4 @@
-public class MainProgram {
+public class Scenario1 {
 	public static void main(String[] args) {
 		// Instanciate a Trainee object.
 		// Payment Method object is instanciated within the Trainee class.

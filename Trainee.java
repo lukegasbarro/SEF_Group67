@@ -100,17 +100,16 @@ public class Trainee {
             }
         }
     }
-    
-    public void printTraineeDetails() 
+
+    //The student completes the feedback poll, and when they press the submit button, it automatically
+    //is stored by the system.
+    public FeedbackPoll completePoll(FeedbackPoll feedbackPoll) 
     {
-        System.out.println("Trainee Name: " + name);
-        System.out.println("Student Number: " + studentNumber);
-        System.out.println("Registered: " + isRegistered);
-        System.out.println("Paid Amount: " + paidAmount);
-        System.out.println("Refund Status: " + refundStatus);
-        System.out.println("Payment Method: " + paymentMethod);
-        System.out.println("Payment Method Active: " + paymentMethodActive);
-        System.out.println("24 Hours Before First Session: " + twentyFourhoursBeforeFirstSession);
+        return feedbackPoll;
     }
+
+
+    
+
 }
 
