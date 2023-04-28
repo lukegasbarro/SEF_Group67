@@ -1,20 +1,21 @@
 
 @startuml
-title Finance Manager Refunds Course Registration Fee
-participant "trainee:Trainee" as trainee
+' title Finance Manager Refunds Course Registration Fee
+title "Trainee Lodges A Registration Fee Refund Request\nWhich Is Addressed By The Finance Manager"
+participant ":Trainee" as trainee
 participant ":FinanceManager" as finance
 participant ":System" as system
 participant "paymentMethod:Trainee" as paymentMethod
 
-activate system
-activate trainee
 
 alt Trainee Is Registered
     trainee -> finance : cancelTraining()
+    activate trainee
     activate finance
     
     alt More Than 24 Hours\nBefore First Session
         finance -> system : approveRefund()
+        activate system
 
         alt Original Payment\nMethod Is Active
             system -> paymentMethod : depositAmount()
@@ -31,6 +32,7 @@ alt Trainee Is Registered
     end
 
     system -> trainee : changeStatusToUnregistered()
+    deactivate system
     paymentMethod --> trainee : Receive Refund
     deactivate paymentMethod
     deactivate trainee
