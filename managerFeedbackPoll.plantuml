@@ -1,5 +1,6 @@
 @startuml
-title "Manager Collects Trainee Feedback Poll"
+' title "Manager Collects Trainee Feedback Poll"
+title Manager Creates A Poll That Is Responded To By A Trainee
 participant ":Manager" as manager
 participant ":FeedbackPoll" as feedback
 participant ":System" as system
@@ -8,7 +9,7 @@ participant ":Trainee" as trainee
 manager -> feedback : createPoll()
 activate manager
 activate feedback
-feedback -> system : Poll Ready
+feedback -> system : Notification: Poll Ready
 activate system
 
 alt Training Course Has Finished AND Was Completed By At Least One Trainee
@@ -18,13 +19,13 @@ alt Training Course Has Finished AND Was Completed By At Least One Trainee
     trainee --> feedback : completePoll()
     deactivate trainee
     feedback -> system : storePoll()            
-    deactivate feedback
     note right: The system stores the feedback poll
 
     alt At Least One Trainee Completed Feedback Poll
-        system -> manager : Poll Results Ready
-        manager --> system : viewPollResults()
+        system -> manager : Notification: Poll Results Ready
         deactivate system
+        manager --> feedback : viewPollResults()
+        deactivate feedback
         deactivate manager
     end
 end
