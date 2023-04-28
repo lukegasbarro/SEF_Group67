@@ -14,7 +14,7 @@ loop Training Session Scheduled
         system -> trainingSession : openTrainingSessio()
         activate system
         activate trainingSession
-        system -> trainingSession : recordTrainingSession()
+        system -> trainingSession : startRecordTrainingSession()
         note left: The system automatically opens the\nonline training room when a session\nstarts and records the session
         ' access resources
         trainer -> trainerResources : accessTrainingResources()
@@ -57,14 +57,16 @@ loop Training Session Scheduled
                 deactivate trainer
                 note right: The Trainer can end the training session at any time
 
-                ' upload recording
-                system -> trainingSession : uploadSessionRecording()
-                note left: The system automatically uploads the session recording
-                deactivate system
-                deactivate trainingSession
             end
         end
     end
+
+    ' upload recording
+    system -> trainingSession : stopRecordTrainingSession()
+    system -> trainingSession : uploadSessionRecording()
+    note left: The system automatically uploads the session recording
+    deactivate system
+    deactivate trainingSession
 end
 
 @enduml
