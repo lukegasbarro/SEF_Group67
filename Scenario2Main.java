@@ -1,4 +1,15 @@
-public class Scenario2 {
+/* 	Selected Scenario 2 -
+A manager creates a poll that is responded to by a trainee.
+
+Classes used in this implementation:
+
+    Manager
+    FeedbackPoll
+	TheSystem - (This was changed from 'System' as it clashed with Java's inbuilt System class)
+    Trainee
+	TrainingCourse  */
+
+public class Scenario2Main {
 
     public static void main(String[] args) {
         

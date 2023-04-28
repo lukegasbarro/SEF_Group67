@@ -1,4 +1,15 @@
-public class Scenario1 {
+/* 	Mandatory Scenario -
+Trainee lodges a registration fee refund request which is addressed by the finance manager.
+
+Classes used in this implementation:
+	Trainee
+	FinanceManager
+	TheSystem - (This was changed from 'System' as it clashed with Java's inbuilt System class)
+	PaymentMethod
+	TrainingCourse  */
+
+			
+public class Scenario1Main {
 	public static void main(String[] args) {
 		// Instanciate a Trainee object.
 		// Payment Method object is instanciated within the Trainee class.
