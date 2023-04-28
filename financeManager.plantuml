@@ -7,7 +7,6 @@ participant ":FinanceManager" as finance
 participant ":System" as system
 participant "paymentMethod:Trainee" as paymentMethod
 
-
 alt Trainee Is Registered
     trainee -> finance : cancelTraining()
     activate trainee
