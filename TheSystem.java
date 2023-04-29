@@ -1,3 +1,14 @@
+/* This TheSystem class is responsible for the automatic functions of the system.
+ * TheSystem was originally going to be called System, but this is a reserved word in Java,
+ * so it had to be changed to TheSystem for this implementation.
+ * TheSystem is responsible for the following automatic functions:
+ * - Refunding the trainee
+ * - Making a position available
+ * - Changing the trainee's status to unregistered
+ * - Releasing a poll to the trainees
+ * - Storing the poll results in the database
+ */
+
 public class TheSystem {
 
     //If the finance manager approves the refund, the system will automatically 

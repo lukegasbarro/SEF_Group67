@@ -1,3 +1,9 @@
+/* This Class is called FinanceManager, and is used to create
+ * a finance manager object. The finance manager is responsible
+ * for approving refunds for trainees. The method below explains 
+ * this process.
+ */
+
 public class FinanceManager {
 
     //The finance manager assesses the refund request. The method returns true if the refund is approved, and false if the refund is denied.

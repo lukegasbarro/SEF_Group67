@@ -1,3 +1,10 @@
+/* This Manager Class is used to create a manager object. 
+ * The manager is responsible for selecting a training course,
+ * creating a feedback poll, releasing the feedback poll to the
+ * trainees, and viewing the results of the feedback poll.
+ * Methods below explain these processes.
+ */
+
 public class Manager {
 
     //The manager selects a training course.
